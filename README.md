@@ -1,0 +1,2 @@
+# jGradius_MODOKI
+jQuery+jCanvasでGradiusモドキをやるっていう
