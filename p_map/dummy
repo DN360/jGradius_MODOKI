@@ -1,0 +1,33 @@
+//レイヤーの追加
+            $('#mainCanvas').drawRect({
+                layer: true,
+                groups: [lay["name"]],
+                name: lay["name"] + "_base",
+                fillStyle: '#000',
+                x: 0, y: 0,
+                width: 0, height: 0
+            });
+            //レイヤーのピクセルデータを読み込む
+            $.get("p_map/" + lay["file"] + ".pxm", function(pix) {
+                var lines = pix.split(';');
+                var cx = 0, cy = 0;
+                $.each(lines, function(linei, line){
+                    var cells = line.split(',');
+                    cx = 0;
+                    $.each(cells, function(celli, cell){
+                        if (dat["color"][cell] != "null"){
+                            $('#mainCanvas').drawRect({
+                                layer: true,
+                                name: lay["name"] + "_" + cx + "_" + cy,
+                                fillStyle: dat["color"][cell],
+                                x: cx, y: cy,
+                                width: cell_w, height: cell_h
+                            });
+                            $('#mainCanvas').addLayerToGroup(lay["name"] + "_" + cx + "_" + cy, lay["name"]);
+                        }
+                        cx += cell_w;
+                    });
+                    cy += cell_h;
+                });
+                drawLayerGroups(lay["name"]);
+            });
