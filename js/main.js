@@ -55,8 +55,8 @@ var updateGame = function() {
         var bigviper = gradius.GetSprite("bigviper");
         var bullet   = gradius.GetValidMultiSprite("n_bullet");
         gradius.UpdateSprite(bullet.SpriteName, function(Sprite) {
-            Sprite.Position.LF = bigviper.Position.RT(); // - bigviper.PixelConfig.CellSize.width * 8
-            Sprite.Position.TP = bigviper.Position.CY();
+            Sprite.Position.LF = bigviper.Position.RT();
+            Sprite.Position.TP = bigviper.Position.CY() - bigviper.PixelConfig.CellSize.height;
         });
         bullet.Usage = false;
         shwBullets.push(bullet.SpriteName);

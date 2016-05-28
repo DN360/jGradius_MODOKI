@@ -135,31 +135,33 @@ class Game {
             var mw = 0, mh = 0;
             var temp_cell = [];
             $.each(lines, function(j, line) {
-                var cells = line.split(',');
-                cx = 0;
-                $.each(cells, function(k, cell) {
-                    cell = cell.replace(/\r?\n/g , "");
-                    if (cell_size_set) {
-                        if (game_data.color[cell] != "null") {
-                            temp_canvas.drawRect({
-                                fillStyle: game_data.color[cell],
-                                x: cell_w / 2 + cx * cell_w, y: cell_h / 2 + cy * cell_h,
-                                width: cell_w, height: cell_h
-                            });
+                if (line != "") {
+                    var cells = line.split(',');
+                    cx = 0;
+                    $.each(cells, function(k, cell) {
+                        cell = cell.replace(/\r?\n/g , "");
+                        if (cell_size_set) {
+                            if (game_data.color[cell] != "null") {
+                                temp_canvas.drawRect({
+                                    fillStyle: game_data.color[cell],
+                                    x: cell_w / 2 + cx * cell_w, y: cell_h / 2 + cy * cell_h,
+                                    width: cell_w, height: cell_h
+                                });
+                            }
+                        } else {
+                            //セルの登録だけ
+                            if (game_data.color[cell] != "null") {
+                                temp_cell.push({
+                                    cell: game_data.color[cell],
+                                    celx: cell_w / 2 + cx * cell_w,
+                                    cely: cell_h / 2 + cy * cell_h
+                                });
+                            }
                         }
-                    } else {
-                        //セルの登録だけ
-                        if (game_data.color[cell] != "null") {
-                            temp_cell.push({
-                                cell: game_data.color[cell],
-                                celx: cell_w / 2 + cx * cell_w,
-                                cely: cell_h / 2 + cy * cell_h
-                            });
-                        }
-                    }
-                    cx++; c++; mw = mw >= cx ? mw : cx;
-                });
-                cy++; mh = mh >= cy ? mh : cy;
+                        cx++; c++; mw = mw >= cx ? mw : cx;
+                    });
+                    cy++; mh = mh >= cy ? mh : cy;
+                }
             });
             sprite_name = l.name;
             if (!cell_size_set) {
