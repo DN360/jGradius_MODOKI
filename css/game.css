@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+    font-size: 2em;
+    text-align: center;
+    color: #aaa;
+}
+
+#mainCanvas {
+    display:block; 
+    margin: 0 auto;
+    border: #aaa 1px dotted;
+    width: 90%;
+    height: auto;
+    max-width: 800px;
+}

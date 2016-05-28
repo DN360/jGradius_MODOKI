@@ -18,16 +18,35 @@
         "F": "#00f"
     },
     "size": {
-        "w": "4",
-        "h": "4"
+        "w"  : "2",
+        "h"  : "2",
+        "ww" : "4",
+        "wh" : "3",
+        "max": "800"
     },
     "layer": {
         "bigviper": {
-            "name": "bigviper",
-            "file": "bigviper"
+            "name"  : "bigviper",
+            "file"  : "p_map/bigviper"
+        },
+        "n_bullet": {
+            "name" : "n_bullet",
+            "file" : "p_map/n_bullet",
+            "multi": 100
         }
     },
     "config": {
-        "background-color": "#000"
+        "background-color"    : "#000",
+        "FPS"                 : 16.666,
+        "layer-file-extention": "pxm",
+        "canvas-name"         : "mainCanvas",
+        "canvas-id"           : "mainCanvas"
+    },
+    "keys": {
+        "LEFT" : 37,
+        "RIGHT": 39,
+        "UP"   : 38,
+        "DOWN" : 40,
+        "SPACE": 32
     }
 }
